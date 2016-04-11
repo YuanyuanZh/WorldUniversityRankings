@@ -1,32 +1,12 @@
 
 d3.csv("timesData.csv", function(err, data) {
 
-  var valueHash = {}
-  var max = 0
-  var min = 1000000
-  data.forEach(function(d){
-    if (d.year === "2016") {
-      var name = d.country   
-      if (!(name in valueHash)) {
-        valueHash[name] = 1
-      }
-      else {
-        valueHash[name] = +valueHash[name] +1
-      }
-      max = Math.max (max, valueHash[name])
-      min = Math.min (min, valueHash[name])
-    }
-  });
-  console.log(valueHash.China);
-  console.log(max)
-  
-  var width = 960,
-      height = 960;
+  var width = 768,
+      height = 568;
   
   var color = d3.scale.linear()
       .range(["#EEDCEC", "#5E07A1"])
       .interpolate(d3.interpolateLab)
-      .domain([min,max]);
   
   var projection = d3.geo.mercator()
       .scale((width + 1) / 2 / Math.PI)
@@ -50,68 +30,69 @@ d3.csv("timesData.csv", function(err, data) {
   function log10(val) {
     return Math.log(val);
   }
-  function smallgraph() {
-    var scale = d3.scale.linear()
-        .domain([1, 5])   // Data space
-        .range([0, 200]); // Pixel space
+  
 
-      var svg = d3.select("path").append("svg")
-        .attr("width",  250)
-        .attr("height", 250);
+    function drawmap(year) {
+      d3.json("world-topo-min.json", function(error, world) {
+        var countries = topojson.feature(world, world.objects.countries).features;
+  
+        svg.append("path")
+          .datum(graticule)
+          .attr("class", "choropleth")
+          .attr("d", path);
+  
+        var g = svg.append("g");
+  
+        g.append("path")
+        .datum({type: "LineString", coordinates: [[-180, 0], [-90, 0], [0, 0], [90, 0], [180, 0]]})
+        .attr("class", "equator")
+        .attr("d", path);
 
-      function render(data, color){
-
-        // Bind data
-        var rects = svg.selectAll("rect").data(data);
-        
-        // Enter
-        rects.enter().append("rect")
-          .attr("y", 50)
-          .attr("width",  20)
-          .attr("height", 20);
-
-        // Update
-        rects
-          .attr("x", scale)
-          .attr("fill", color);
+      var valueHash = {}
+      var ranking = {}
+      var max = 0
+      var min = 1000000
+      data.forEach(function(d){
+      if (d.year === year) {
+        var name = d.country   
+        if (!(name in valueHash)) {
+          valueHash[name] = {}
+          valueHash[name]["count"] = 1
+          valueHash[name]["names"] = [d.university_name]
+        }
+        else {
+          valueHash[name]["count"] = +valueHash[name]["count"] +1
+          valueHash[name]["names"].push (d.university_name)
+        }
+        max = Math.max (max, valueHash[name]["count"])
+        min = Math.min (min, valueHash[name]["count"])
+        ranking[d.university_name] = d.world_rank
       }
-
-      render([1, 2, 2.5],     "red");
-      render([1, 2, 3, 4, 5], "blue");
-      render([1, 2],          "green");
-  }
+     });
+      color.domain([min,max]);
+      console.log(valueHash.China.count);
+      console.log(max)
+      //console.log("Yale University:" + ranking["Yale University"])
+      var country = g.selectAll(".country").data(countries);
   
-  d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/world-topo-min.json", function(error, world) {
-    var countries = topojson.feature(world, world.objects.countries).features;
-  
-    svg.append("path")
-       .datum(graticule)
-       .attr("class", "choropleth")
-       .attr("d", path);
-  
-    var g = svg.append("g");
-  
-    g.append("path")
-     .datum({type: "LineString", coordinates: [[-180, 0], [-90, 0], [0, 0], [90, 0], [180, 0]]})
-     .attr("class", "equator")
-     .attr("d", path);
-  
-    var country = g.selectAll(".country").data(countries);
-  
-    country.enter().insert("path")
+      country.enter().insert("path")
+        .attr("class", "country")
+        .attr("d", path)
+        .attr("id", function(d,i) { return d.id; })
+        .attr("title", function(d) { return d.properties.name; })
         .attr("class", "country")
         .attr("d", path)
         .attr("id", function(d,i) { return d.id; })
         .attr("title", function(d) { return d.properties.name; })
         .style("fill", function(d) { 
             if (valueHash[d.properties.name]) {
-                return color(valueHash[d.properties.name]);
+                return color(valueHash[d.properties.name]["count"]);
             }
             else {
                 return "#E1E1E4";
             }
-          })   
-        .on("mousemove", function(d) {
+          })
+          .on("mousemove", function(d) {
             var html = "";
   
             html += "<div class=\"tooltip_kv\">";
@@ -119,40 +100,60 @@ d3.csv("timesData.csv", function(err, data) {
             html += d.properties.name;
             html += "</span>";
             html += "<span class=\"tooltip_value\">";
-            html += (valueHash[d.properties.name] ? valueHash[d.properties.name] : "0");
-            html += "";
+            html += (valueHash[d.properties.name] ? valueHash[d.properties.name]["count"] : "0") + " universities";
             html += "</span>";
+            html += "<br><br>";
+            if (d.properties.name in valueHash) {
+              var array = valueHash[d.properties.name]["names"]
+                html += "<span class=\"tooltip_key\">";
+                html += "University Name";
+                html += "</span>";
+                html += "<span class=\"tooltip_title\">";
+                html += "Ranking";
+                html += "</span>";
+                html += "<br>"
+                for(var i in array) {
+                  html += "<span class=\"tooltip_key\">";
+                  html += array[i];
+                  html += "</span>";
+                  html += "<span class=\"tooltip_value\">";
+                  html += ranking[array[i]];
+                  html += "</span>";
+                  html += "<br>"
+                }
+            }
+            html += "";
             html += "</div>";
             
             $("#tooltip-container").html(html);
-            // $("#tooltip-container").html(smallgraph());
             $(this).attr("fill-opacity", "0.8");
             $("#tooltip-container").show();
             
             var coordinates = d3.mouse(this);
-            
-            var map_width = $('.choropleth')[0].getBoundingClientRect().width;
-            
-            if (d3.event.pageX < map_width / 2) {
-              d3.select("#tooltip-container")
-                .style("top", (d3.event.layerY + 15) + "px")
-                .style("left", (d3.event.layerX + 15) + "px");
-            } else {
-              var tooltip_width = $("#tooltip-container").width();
-              d3.select("#tooltip-container")
-                .style("top", (d3.event.layerY + 15) + "px")
-                .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
-            }
+            d3.select("#tooltip-container")
+                .style("top", 100 + "px")
+                .style("left", 800 + "px");
         })
         .on("mouseout", function() {
                 $(this).attr("fill-opacity", "1.0");
                 $("#tooltip-container").hide();
             });
-    
-    g.append("path")
-        .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
-        .attr("class", "boundary")
-        .attr("d", path);
-  });
+      g.append("path")
+      .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
+      .attr("class", "boundary")
+      .attr("d", path);
+      });
+    }
+    drawmap ("2016");
+
+    d3.select("#sm_select")
+      .selectAll("a")
+      .data(["2016","2015","2014","2013","2012","2011"])
+      .on("click",function(d){
+        d3.event.preventDefault();
+        d3.selectAll("#sm_select a").classed("selected",false);
+        d3.select(this).classed("selected",true);
+        drawmap(d);
+      })
   d3.select(self.frameElement).style("height", height + "px");
 });
