@@ -1,0 +1,101 @@
+world_rank,university_name,country,teaching,international,research,citations,total_score,num_students,student_staff_ratio,international_students,year
+1,California Institute of Technology,United States,96.3,59.8,99.4,99.7,95.5,2243,6.9,27%,2013
+2,Stanford University,United States,95,56.6,98.8,99.3,93.7,15596,7.8,22%,2013
+2,University of Oxford,United Kingdom,89.7,88.7,98.1,95.6,93.7,19919,11.6,34%,2013
+4,Harvard University,United States,94.9,63.7,98.6,99.2,93.6,20152,8.9,25%,2013
+5,Massachusetts Institute of Technology,United States,92.9,81.6,89.2,99.9,93.1,11074,9,33%,2013
+6,Princeton University,United States,89.5,54.5,99.4,99.8,92.7,7929,8.4,27%,2013
+7,University of Cambridge,United Kingdom,91.2,83.6,95.6,96.2,92.6,18812,11.8,34%,2013
+8,Imperial College London,United Kingdom,88,91.4,90.9,93,90.6,15060,11.7,51%,2013
+9,"University of California, Berkeley",United States,85.1,49.7,99.3,99.3,90.5,36186,16.4,15%,2013
+10,University of Chicago,United States,89.6,55.3,92.9,98.7,90.4,14221,6.9,21%,2013
+11,Yale University,United States,93.2,54.7,92.5,94.8,89.2,11751,4.4,20%,2013
+12,ETH Zurich – Swiss Federal Institute of Technology Zurich,Switzerland,82.5,95.7,92.7,86.6,87.8,18178,14.7,37%,2013
+13,"University of California, Los Angeles",United States,87.3,42.3,93.8,95.9,87.7,38206,10.3,15%,2013
+14,Columbia University,United States,89.7,66.1,82,96.1,87,25055,5.9,28%,2013
+15,University of Pennsylvania,United States,90,38.1,89.4,96.2,86.6,20376,6.5,20%,2013
+16,Johns Hopkins University,United States,81.8,57.3,85.5,95.3,85.6,15128,3.6,23%,2013
+17,University College London,United Kingdom,83.5,89,88.8,86.8,85.5,26607,10.7,46%,2013
+18,Cornell University,United States,77,53.8,92.1,91.8,83.3,21424,10.2,19%,2013
+19,Northwestern University,United States,77.6,33.8,87.3,98.2,83.1,18334,13.8,15%,2013
+20,University of Michigan,United States,76.1,47.6,91.4,91.6,82.6,41786,9,16%,2013
+21,University of Toronto,Canada,79.6,65.1,89.4,85.1,82.2,66198,19.5,15%,2013
+22,Carnegie Mellon University,United States,71.8,51.4,87,95.5,81.5,11885,13.1,35%,2013
+23,Duke University,United States,72.3,45.8,81.5,97,81.2,15172,4.8,17%,2013
+24,University of Washington,United States,74.7,39.1,81.3,97,79.9,44020,11.8,13%,2013
+25,Georgia Institute of Technology,United States,70.2,66.3,79.5,90.3,78.8,19967,20.1,26%,2013
+25,University of Texas at Austin,United States,75.5,42.1,80.7,91,78.8,49427,17.4,9%,2013
+27,University of Tokyo,Japan,87.9,27.6,89.9,71.3,78.3,26199,5.7,10%,2013
+28,University of Melbourne,Australia,68.4,77.2,82.5,83.7,77.9,40128,23.7,35%,2013
+29,National University of Singapore,Singapore,74.4,92.3,87.2,67.2,77.5,31592,15.5,34%,2013
+30,University of British Columbia,Canada,69.1,82.1,80.4,84,77.3,50152,17.6,25%,2013
+31,University of Wisconsin-Madison,United States,76.1,29.8,80.1,88.2,76.9,39655,10.8,11%,2013
+32,University of Edinburgh,United Kingdom,68.4,78.9,71.3,90.8,76.1,25774,14.1,36%,2013
+33,University of Illinois at Urbana-Champaign,United States,74.2,36,84.9,80.8,75.8,42727,18.7,20%,2013
+34,McGill University,Canada,74.4,75.9,80.4,75.2,75.7,31326,13.7,23%,2013
+35,"University of California, Santa Barbara",United States,56.1,58.3,73.5,99.4,75.6,22020,27.3,11%,2013
+35,University of Hong Kong,Hong Kong,78.4,81.7,85.9,62.1,75.6,19835,17.6,38%,2013
+37,Australian National University,Australia,68.6,90,83.5,73.5,75.4,14604,19.2,35%,2013
+38,"University of California, San Diego",United States,63.4,34.2,79,96.2,75.2,27233,6.5,11%,2013
+39,London School of Economics and Political Science,United Kingdom,70.8,87.2,80.8,66.5,73.1,7960,7,20%,2013
+40,École Polytechnique Fédérale de Lausanne,Switzerland,62.4,98.8,57,95,73,9666,10.5,54%,2013
+41,New York University,United States,73.8,38.7,67.4,89.2,72.8,42056,6.8,19%,2013
+42,Karolinska Institute,Sweden,66.3,64.5,75.7,77.3,72.4,7774,11.5,22%,2013
+42,University of North Carolina at Chapel Hill,United States,70.4,32.9,69.3,90.1,72.4,26518,7.3,8%,2013
+44,"University of California, Davis",United States,67.9,51.7,71.6,82.7,71.8,35364,13.9,13%,2013
+44,Washington University in St Louis,United States,66,44.3,62.8,95.2,71.8,12528,5.7,17%,2013
+46,Peking University,China,81.5,54.1,67.9,64.3,70.7,40148,8.3,14%,2013
+47,University of Minnesota,United States,66.1,28.7,74,84.7,70.5,46825,18,13%,2013
+48,LMU Munich,Germany,65.4,54.7,66.5,85.5,70.4,35691,15.5,13%,2013
+49,University of Manchester,United Kingdom,65.9,77.9,67.7,76.9,70.1,34938,15.3,34%,2013
+50,Pohang University of Science and Technology,South Korea,63.9,28.8,63.9,88.2,69.4,3055,10.1,4%,2013
+51,Brown University,United States,63.7,36.9,60.3,94.1,68.9,8653,10.1,19%,2013
+52,Tsinghua University,China,74.5,37.2,76.4,55.2,67.1,39763,13.7,10%,2013
+53,Ohio State University,United States,66.7,46.3,60.9,80.1,67,51462,13.4,12%,2013
+54,Boston University,United States,65.4,39.2,50.9,94.2,66.8,24789,8.6,17%,2013
+54,Kyoto University,Japan,77.1,26.3,74.8,57.8,66.8,22809,5.6,7%,2013
+56,University of Southern California,United States,68.4,43.4,57.1,81.9,66.3,36534,12.9,20%,2013
+57,King’s College London,United Kingdom,53.5,86,59.3,82.8,66.2,21394,11.4,37%,2013
+58,KU Leuven,Belgium,59.7,56.6,71,67.2,66.1,42503,41.9,18%,2013
+59,Seoul National University,South Korea,76.7,27,81.4,48,65.9,26389,13.9,10%,2013
+59,École Normale Supérieure,France,61.6,67.3,46.9,90.3,65.9,2400,7.9,20%,2013
+61,Pennsylvania State University,United States,55,34.9,69.2,81.4,65.8,44501,12.4,12%,2013
+62,University of Sydney,Australia,59.5,83,70.1,62.9,65.7,41868,20.2,28%,2013
+62,École Polytechnique,France,56.5,83,54.7,80.7,65.7,2429,4.8,30%,2013
+64,Leiden University,Netherlands,54,54.8,67.1,78.4,65.1,21222,17.1,10%,2013
+65,Hong Kong University of Science and Technology,Hong Kong,56.9,78.1,64.6,68.9,64.4,11385,23.8,36%,2013
+65,The University of Queensland,Australia,54.4,77.8,66.1,69.6,64.4,34718,32.7,27%,2013
+67,Utrecht University,Netherlands,48,47.3,64.7,82.4,64.1,30779,15.4,7%,2013
+68,Korea Advanced Institute of Science and Technology (KAIST),South Korea,69.9,31.1,68.9,58.4,64,9027,10,9%,2013
+69,Purdue University,United States,59.8,54.8,71.9,63.1,63.8,39256,18.1,22%,2013
+70,University of Göttingen,Germany,50,51,52.5,92.5,63.2,25581,25.6,12%,2013
+70,Wageningen University and Research Center,Netherlands,54.9,79.2,53.7,73.8,63.2,9248,17,21%,2013
+72,Erasmus University Rotterdam,Netherlands,44.5,62.8,64.1,80.2,62.9,20580,18.9,18%,2013
+72,University of Massachusetts,United States,57.1,31.7,62.6,77.8,62.9,56959,13,11%,2013
+74,University of Bristol,United Kingdom,50.1,71.9,51.7,85.4,62.5,17906,14,25%,2013
+75,Rice University,United States,49.5,59,39.3,100,62,6333,9,26%,2013
+76,University of Pittsburgh,United States,54.6,29.4,55.1,85.2,61.7,26485,5.8,10%,2013
+77,Delft University of Technology,Netherlands,59.9,67.7,75.1,45.1,61.6,15920,19.4,25%,2013
+78,Heidelberg University,Germany,61.4,61.3,49,75.5,61.4,28881,24.5,17%,2013
+79,Emory University,United States,56.7,36.6,44.4,90.9,61.3,12338,4.5,18%,2013
+80,Durham University,United Kingdom,42.3,77.7,44.5,93.3,60.7,15489,15.7,24%,2013
+81,Pierre and Marie Curie University,France,59.2,64.4,43.5,80.6,60.5,27862,8.7,18%,2013
+82,Lund University,Sweden,43.6,64.4,61.3,77.1,60.3,28251,11.5,15%,2013
+83,University of Amsterdam,Netherlands,45.6,57,61.3,75.1,60.1,24570,14.4,11%,2013
+84,University of Montreal,Canada,54,74.6,57.9,60.9,59.8,38264,20.3,25%,2013
+85,University of New South Wales,Australia,52.6,84.8,63.8,56.7,59.6,38309,25.9,33%,2013
+86,Nanyang Technological University,Singapore,45.7,90.5,66.9,54.5,59.4,25028,16.2,33%,2013
+87,Tufts University,United States,52.6,39.6,36.4,94.8,59.1,10410,10,14%,2013
+88,McMaster University,Canada,42.3,66.9,47.9,81.7,59,23823,19.3,15%,2013
+89,University of Groningen,Netherlands,43.8,49.8,61,71.6,58.8,24556,25.6,12%,2013
+89,University of Zurich,Switzerland,50,84.1,41.6,80,58.8,26583,6.5,19%,2013
+91,University of Colorado Boulder,United States,42.3,34.7,44.4,97.1,58.7,29325,16.1,8%,2013
+92,Paris-Sud University,France,48,63.9,45.9,82.9,58.6,27603,15,17%,2013
+93,Ghent University,Belgium,46.4,49.1,56.7,71.3,58.4,32166,34.1,9%,2013
+94,Michigan State University,United States,51.8,36.8,56.8,73.8,58.3,44750,15.7,15%,2013
+94,University of Notre Dame,United States,48.3,41.6,39.6,93.5,58.3,11829,13.8,10%,2013
+96,"University of California, Irvine",United States,44,35.2,47.2,90.3,58.2,26614,16.1,16%,2013
+97,"University of Maryland, College Park",United States,44.9,40.4,51.4,83.9,57.9,31331,8.4,9%,2013
+98,University of Arizona,United States,47,31.3,53.7,76.9,57.7,36429,12.7,8%,2013
+99,Humboldt University of Berlin,Germany,55.4,57.5,58.7,59.5,57.5,29987,52.5,16%,2013
+100,Monash University,Australia,47.8,66.4,60.6,60.9,57.5,50882,40.5,36%,2013

@@ -1,5 +1,5 @@
 
-d3.csv("timesData.csv", function(err, data) {
+d3.csv("metadata/timesData.csv", function(err, data) {
 
   var width = 768,
       height = 568;
@@ -131,7 +131,7 @@ d3.csv("timesData.csv", function(err, data) {
             
             var coordinates = d3.mouse(this);
             d3.select("#tooltip-container")
-                .style("top", 100 + "px")
+                .style("top", 270 + "px")
                 .style("left", 800 + "px");
         })
         .on("mouseout", function() {
@@ -145,6 +145,42 @@ d3.csv("timesData.csv", function(err, data) {
       });
     }
     drawmap ("2016");
+
+    d3.select("#sy_select")
+      .selectAll("a")
+      .data(["2016","2015","2014","2013","2012","2011"])
+      .on("click",function(d){
+        d3.event.preventDefault();
+        d3.selectAll("#sy_select a")
+          .classed("selected",false);
+        d3.select(this).classed("selected",true);
+      
+        selectYear =d;
+              document.getElementById('pc').innerHTML="";
+        AynalyseUniversityInfo(selectYear, selectSegment);
+      });
+
+
+  d3.select("#sr_select")
+      .selectAll("a")
+      .data(["1-25","26-50","51-75","76-100"])
+      .on("click",function(d){
+        d3.event.preventDefault();
+        d3.selectAll("#sr_select a")
+          .classed("selected",false);
+        d3.select(this).classed("selected",true);
+        
+        switch(d) {
+          case "1-25" : selectSegment =0; break;
+          case "26-50" : selectSegment =1; break;
+          case "51-75" : selectSegment =2; break;
+          case "76-100" : selectSegment =3; 
+        }
+
+              document.getElementById('pc').innerHTML="";
+        AynalyseUniversityInfo(selectYear, selectSegment);
+      });
+
 
     d3.select("#sm_select")
       .selectAll("a")

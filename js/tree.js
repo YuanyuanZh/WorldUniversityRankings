@@ -1,4 +1,6 @@
-d3.csv("timesData.csv", function(err, data) {
+  
+
+d3.csv("metadata/timesData.csv", function(err, data) {
   var datatree = {"name": "country","children": []}
   var countries = {}
   var universities = {}
@@ -93,7 +95,7 @@ function update(source) {
 
   nodeEnter.append("circle")
       .attr("r", 1e-6)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .style("fill", function(d) { return d._children ? "#CD63CD" : "#fff"; });
 
   nodeEnter.append("text")
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
@@ -109,7 +111,7 @@ function update(source) {
 
   nodeUpdate.select("circle")
       .attr("r", 4.5)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .style("fill", function(d) { return d._children ? "#CD63CD" : "#fff"; });
 
   nodeUpdate.select("text")
       .style("fill-opacity", 1);
@@ -180,3 +182,5 @@ function collapse(d) {
     }
 }
 });
+
+

@@ -1,0 +1,478 @@
+html {
+    overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    text-decoration: none;
+    color: #006AAD;
+}
+
+a:hover {
+    color: #A06535;
+}
+
+#header {
+    width: 80%;
+    min-width: 960px;
+    margin: 0 auto 10px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+#header h1 {
+    font-size: 25px;
+    color: #000;
+    font: Arial;
+    font-weight: bold;
+    text-align: center;
+    /*margin-top:30;*/
+    padding: 0;
+}
+
+#header h1 b {
+    font-weight: 700;
+}
+
+#pc {
+    width: 80%;
+    min-width: 960px;
+    margin-top:50px;
+    margin: 0 auto;
+    /*padding-top: 50px;*/
+    margin-top:100px;
+    min-height: 400px;
+    position: relative;
+}
+
+#pc div#tooltip2 {
+    position: absolute;
+    font-size: 11px;
+
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    font-size: 11px;
+    color: #000;
+    display: none;
+}
+
+/* help content*/
+#pc div#tooltip2 div {
+    width: 180px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    /*text-align: center;*/
+
+/*    border-style: solid;
+    border-color: #000;*/
+    /*color: #000;*/
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#pc div#tooltip2.visible {
+    display: block;
+    /*border-style: double;*/
+    /*border-color: #fff;*/
+}
+
+#pc div#tooltip2 h4 {
+    margin: 2px;
+    font-weight: 400;
+    text-transform: uppercase;    
+    color: #000;
+}
+
+#pc svg {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin: 0 auto;
+    display: block;
+}
+
+#pc svg #columns line {
+    shape-rendering: crispEdges;
+    stroke: #000;
+    stroke-width: 1;
+    fill: none;
+}
+
+#pc svg #universities circle {
+    stroke: none;
+    fill: #333;
+}
+
+#pc svg #universities g.hover circle {
+    stroke: #972F97;
+    stroke-width: 3;
+    fill: #333;
+}
+
+
+/* CONNECTION COLOR and width*/
+#pc svg #universities path {
+    stroke: #D8B2D8;
+    stroke-opacity: 0.2;
+    stroke-width: 1;
+    fill: none;
+}
+
+#pc svg #universities g.hover path {
+    stroke: #972F97;
+    stroke-opacity: 1;
+    stroke-width: 2;
+    fill: none;
+}
+
+#pc svg #universities g.hover g.highlight path {
+    stroke: #000;
+    stroke-opacity: 1;
+    stroke-width: 3;
+    fill: none;
+}
+
+
+#pc svg #universities text {
+    fill: #000;
+    font-size: 13px;
+    text-anchor: end;
+
+}
+
+#pc svg #universities g .univ-label {
+    cursor: pointer;
+}
+
+#pc svg #universities g.new .univ-label text {
+    fill: #972F97;
+}
+
+/* universities text color on hover */
+#pc svg #universities g.hover .univ-label text,
+#pc svg #universities g.highlight .univ-label text{
+/*#pc svg #universities g.year .univ-label text {*/
+    fill-opacity: 1;
+    fill: #fff;
+}
+
+#pc svg #universities .univ-label rect {
+    fill: #972F97;
+    fill-opacity: 0;
+}
+
+#pc svg #universities g.hover .univ-label rect{
+/*#pc svg #universities g.year .univ-label rect {*/
+    fill-opacity: 1;
+    fill: #972F97;
+}
+
+#pc svg #universities g.highlight .univ-label rect {
+    fill-opacity: 1;
+    fill: #333;
+}
+
+#pc svg #universities g.hover .univ-label rect.hover {
+    fill-opacity: 0;
+}
+
+/* hover column text color*/
+#pc svg #labels .label text {
+
+    fill-opacity: 0;
+    text-anchor: middle;
+    font-weight: normal;
+    fill: #5d1d5d;
+}
+
+#pc svg #labels g.hover .world_rank1 text {
+
+    font-size:50px;
+    text-anchor: middle;
+    font-weight: bold;
+    fill: #5d1d5d;
+}
+
+#pc svg #labels g.highlight .world_rank1 text {
+
+    font-size:50px;
+    text-anchor: middle;
+    font-weight: bold;
+    fill: #000;
+}
+
+#pc svg #labels .label rect.ix {
+    fill: #000;
+    fill-opacity: 0;
+    cursor: pointer;
+}
+
+/* column hover path label*/
+#pc svg #labels g.label path.label {
+    fill: #fff;
+    stroke: #972F97;
+    fill-opacity: 0.8;
+    stroke-opacity: 0.8;
+    display: none;
+}
+
+/* column hover text*/
+
+#pc svg #labels g.hover .label path.label,
+#pc svg #labels g.hover .label text {
+    font-size: 13px;
+    display: block;
+    fill-opacity: 1;
+}
+
+
+#pc svg #labels g.hover .label path.label {
+    fill-opacity: 1;
+}
+
+/*#pc svg #labels g.hover.year .label path.label,*/
+#pc svg #labels g.hover .world_rank1 .label text {
+    display: none;
+    fill-opacity: 0;
+    font-size: 20px;
+}
+
+#pc svg #labels g.hover .world_rank1 .label:last-child text {
+    display: block;
+    fill-opacity: 1;
+}
+
+#pc svg #labels g.hover .world_rank1 .label.year text {
+    display: block;
+    fill-opacity: 1;
+    font-size: 20px;
+}
+
+#pc svg #universities g.highlight g.connection path{
+/*#pc svg #universities g.highlight g.connection.year path,
+#pc svg #universities g.hover g.connection path{
+/*#pc svg #universities g.year g.connection path {*/
+    stroke: #000;
+    stroke-opacity: 0.8;
+    stroke-width: 1;
+}
+
+#pc svg #universities g.highlight g.connection path,
+/*#pc svg #universities g.highlight g.connection.year path,*/
+#pc svg #labels g.highlight g.label path.label {
+    stroke: #333;
+}
+
+#pc svg #universities g.connection g.highlight g.hover path.hover {
+    stroke-opacity: 1;
+    stroke-width: 10;
+}
+
+#pc svg #universities .marker circle {
+    fill: #333;
+    fill-opacity: 1;
+}
+
+#pc svg #universities .marker circle.hover {
+    fill: #00348E;
+    fill-opacity: 2;
+}
+
+#pc svg #universities .marker  circle {
+    fill-opacity: 2;
+    fill: #972F97;
+}
+
+#pc svg #universities .marker text {
+    text-anchor: middle;
+    font-size: 10px;
+    fill: #333;
+}
+
+#pc svg #universities .marker line {
+    stroke-width: 4;
+    stroke: #333;
+    stroke-opacity: 0;
+}
+
+#pc svg #universities .marker rect {
+    shape-rendering: crispEdges;
+    stroke-width: 1;
+    stroke: #972F97;
+    stroke-opacity: 0;
+    fill-opacity: 0;
+}
+
+#pc svg #universities .marker.ordinal line {
+    stroke-opacity: 1;
+}
+
+#pc svg #universities .marker.ordinal rect {
+    stroke-opacity: 0.5;
+    fill-opacity: 1;
+}
+
+#pc svg #universities g.hover .marker rect{
+/*#pc svg #universities g.year .marker rect {*/
+    stroke-width: 1;
+    stroke-opacity: 1;
+}
+
+#pc svg #universities g.highlight .marker rect {
+    stroke: #333;
+    stroke-opacity: 1;
+}
+
+#pc svg .column text.title {
+    text-anchor: middle;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: help;
+}
+
+#pc svg .column text.title.first {
+    text-anchor: end;
+}
+
+#pc svg #columns g.axis {
+}
+
+#pc svg #columns g.axis line {
+    shape-rendering: crispEdges;
+    stroke: #660066;
+    stroke-width: 1;
+}
+
+#pc svg #columns g.axis g.tick text {
+    font-size: 10px;
+    fill: #660066;
+    text-anchor: middle;
+}
+
+#pc svg #columns g.axis g.tick.start text {
+    text-anchor: start;
+}
+
+#pc svg #columns g.axis g.tick.end text {
+    text-anchor: end;
+}
+
+#contents {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#contents .description {
+    margin: 20px 100px;
+    padding: 10px;
+    color: #111;
+    font-size: 13px;
+}
+
+#contents .description h5 {
+    font-size: 15px;
+    color: #000;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+#sy_select {
+  width: 400px;
+  /*margin:0 auto;*/
+  float: left;
+  margin-left: 280px;
+  margin-right: 40;
+  overflow: hidden;
+  position: left;
+}
+
+#sy_select #sy_selector {
+  width:375px;
+  height:25px;
+  line-height: 25px;
+  position: relative;
+  border:1px solid #999;
+  font-size:11px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  float: left;
+}
+
+#sy_select a {
+  display: block;
+  float: left;
+  width: 16.67%;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  color:#aaa;
+  background-color: #ddd;
+}
+#sy_select a.selected {
+  color:#000;
+  background-color: #fff;
+  font-weight: 700;
+  font-size:12px;
+  cursor: default;
+}
+#sy_select a:hover {
+  color:#006AAD;
+}
+
+
+
+#sr_select {
+  float: right;
+  width: 210px;
+  /*margin:0 auto;*/
+  /*margin-left: 800px;*/
+  margin-right: 250px;
+  overflow: hidden;
+  position: right;
+}
+
+#sr_select #sr_selector {
+  width:200px;
+  height:25px;
+  line-height: 25px;
+  position: right;
+  border:1px solid #999;
+  font-size:11px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  float: left;
+}
+
+#sr_select a {
+  display: block;
+  float: left;
+  width: 25%;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  color:#aaa;
+  background-color: #ddd;
+}
+#sr_select a.selected {
+  color:#000;
+  background-color: #fff;
+  font-weight: 700;
+  font-size:12px;
+  cursor: default;
+}
+#sr_select a:hover {
+  color:#006AAD;
+}
+
