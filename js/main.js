@@ -33,13 +33,13 @@
 
 			dimensions:["university_name","teaching","total_score","international","research","citations","student_staff_ratio","total_score","world_rank"],//,"international_students"],
 			column_map:{
-				"university_name":["University","Name"],
+				"university_name":["University Name"],
 				"teaching":"Teaching",
 				"international":"International",
 				"research":"Research",
 				"citations":["Citations"],
 				"student_staff_ratio":["Student Staff","Ratio"],
-				"total_score":["Total","Score"],
+				"total_score":["Total Score"],
 				"world_rank":["World","Rank"]
 			},
 			help:{
@@ -50,7 +50,7 @@
 				"citations":"<h4>Citations</h4>Citation Score.",
 				"total_score":"<h4>Total Score</h4>Total Score of University",
 				"student_staff_ratio":"<h4>Students VS Staff Ratio</h4>Students numbers vs staff numbers ratio.",
-				"world_rank":"World Rank of University."
+				"world_rank":"<h4>world rank</h4>World Rank of University."
 			},
 			duration:1,
 			path:"data/",
@@ -79,12 +79,12 @@
 	AynalyseUniversityInfo(selectYear, selectSegment);
 
 
-	// d3.select("#sm_select")
+	// d3.select("#sy_select")
 	// 		.selectAll("a")
 	// 		.data(["2011","2012","2013","2014","2015","2016"])
 	// 		.on("click",function(d){
 	// 			d3.event.preventDefault();
-	// 			d3.selectAll("#sm_select a")
+	// 			d3.selectAll("#sy_select a")
 	// 				.classed("selected",false);
 	// 			d3.select(this).classed("selected",true);
 			
