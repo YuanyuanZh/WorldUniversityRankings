@@ -132,7 +132,7 @@ d3.csv("metadata/timesData.csv", function(err, data) {
             var coordinates = d3.mouse(this);
             d3.select("#tooltip-container")
                 .style("top", 270 + "px")
-                .style("left", 800 + "px");
+                .style("left", 850 + "px");
         })
         .on("mouseout", function() {
                 $(this).attr("fill-opacity", "1.0");
