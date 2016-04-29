@@ -33,7 +33,7 @@ d3.csv("metadata/timesData.csv", function(err, data) {
   
 
     function drawmap(year) {
-      d3.json("world-topo-min.json", function(error, world) {
+      d3.json("metadata/world-topo-min.json", function(error, world) {
         var countries = topojson.feature(world, world.objects.countries).features;
   
         svg.append("path")
@@ -131,8 +131,10 @@ d3.csv("metadata/timesData.csv", function(err, data) {
             
             var coordinates = d3.mouse(this);
             d3.select("#tooltip-container")
-                .style("top", 270 + "px")
-                .style("left", 850 + "px");
+                // .style("top", 270 + "px")
+                // .style("left", 850 + "px");
+                .style("left", (d3.event.pageX) + 50 + "px")
+                .style("top", (d3.event.pageY - 30) + "px"); 
         })
         .on("mouseout", function() {
                 $(this).attr("fill-opacity", "1.0");

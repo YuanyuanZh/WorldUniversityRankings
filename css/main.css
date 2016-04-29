@@ -134,8 +134,35 @@ body {
   font: 10px sans-serif;
 }
 
+#search-svg {
+  font: 10px sans-serif;
+  width:100%;
+  /*min-width: 960px;*/
+  position: relative;
+  margin-left: 10%
+  /*margin-right: 10%*/
+}
 .link {
   fill: none;
   stroke: #ccc;
+  stroke-width: 1.5px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font: 10px sans-serif;
+}
+
+/*.x.axis path {
+  display: none;
+}*/
+
+.line {
+  fill: none;
+  stroke: steelblue;
   stroke-width: 1.5px;
 }
