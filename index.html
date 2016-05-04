@@ -3,18 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>D3 - Top 100 Universities Ranking</title>
-    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/pc.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script src="js/geo.js"></script>
-    <script src="js/tree.js"></script>
     <script src="js/universitiesAnalysis.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/tree.js"></script>
   </head>
 
 <body>
@@ -34,7 +38,7 @@
         </div>
       </div>
 </div>
-<div style="width: 1280px;height: 600px" id ="canvas-svg"></div>
+<div style="width: 768px;height: 600px" id ="canvas-svg"></div>
 <div id="tooltip-container"></div>
 <p><br><font face="verdana"> Want more detailed information of each top 100 university?<br>
   <br>Below parallel visualization can let you get multiaspect data of each university,not only ranking.<br><br> Select year and range of ranking, move your mouse onto the university you are interested, detail figures will be highlighted.</front></p>
@@ -68,9 +72,38 @@
     </div>
     <br/><br/>
   </div>
-<p><br><font face="verdana"> Try a different way to explore top 100 universities.<br>
+<div>
+<p><br><font face="verdana"> Already have your target universities?<br>
+  <br>Use our search bar to compare two universities.<br><br> You will see two universities comparision in different aspects.<br></front><br></p>
+<div>
+<div id = "search-svg">
+  <div  id = "search-bar" style="height:100px;width:80%;float:left;margin-left: 15%">
+  <label id="selectors1"></label>
+  <label id="selectors2"></label>
+  <button id="submit" >compare</button>
+  </div>
+
+<div id="s-left" style="height:800px;width:50%;float:left">
+  <div id = "s1" style="height:250px;width:100%;float:left">
+  </div>
+  <div id = "s2" style="height:250px;width:100%;float:left">
+  </div>
+  <div id = "s3" style="height:250px;width:100%;float:left">
+  </div>
+</div>
+
+<div id="s-right" style="height:800px;width:50%;float:right">
+  <div id = "s4" style="height:250px;width:100%;float:right">
+  </div>
+  <div id = "s5" style="height:250px;width:100%;float:right">
+  </div>
+  <div id = "s6" style="height:250px;width:100%;float:right">
+  </div>
+</div>
+</div>
+
+<p><br><br><font face="verdana"> Try a different way to explore top 100 universities.<br>
   <br>Search universites by country nodes in the collapse tree.<br><br> Unfold the country node, all universities in top 100 will be listed.<br><br>Choose your target university, you will get up to 6 years ranking info.</front></p>
 <div id ="tree-svg"></div>
-
 </body>
 </html>
