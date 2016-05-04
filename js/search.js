@@ -96,7 +96,6 @@ var line = d3.svg.line()
       // x.domain([2011,2016]);
       xScale.domain(d3.extent(data, function(d) { return d.year; }));
       yScale.domain(domain_map[aspect])
-      
       svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -133,7 +132,7 @@ var line = d3.svg.line()
         .attr("transform", function(d) { return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")"; })
         .attr("x", 3)
         .attr("dy", ".35em")
-        .text(function(d) { console.log(d.name);return d.name; });
+        .text(function(d) { return d.name; });
       // svg.selectAll(".dot")
       // .data(univers)
       // .enter().append("circle")

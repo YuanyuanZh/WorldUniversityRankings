@@ -59,19 +59,41 @@ d3.csv("metadata/timesData.csv", function(err, data) {
           valueHash[name] = {}
           valueHash[name]["count"] = 1
           valueHash[name]["names"] = [d.university_name]
+          valueHash[name]["ranknums"] = {}
+          valueHash[name]["ranknums"]["rank 1 - 20:"] = 0;
+          valueHash[name]["ranknums"]["rank 21 - 40:"] = 0;
+          valueHash[name]["ranknums"]["rank 41 - 60:"] = 0;
+          valueHash[name]["ranknums"]["rank 61 - 80:"] = 0;
+          valueHash[name]["ranknums"]["rank 81 - 100:"] = 0;          
         }
         else {
           valueHash[name]["count"] = +valueHash[name]["count"] +1
           valueHash[name]["names"].push (d.university_name)
         }
+          r = +d.world_rank
+          if (r >= 1 && r <= 20){
+              valueHash[name]["ranknums"]["rank 1 - 20:"] += 1;
+          }
+          else if (r >= 21 && r <=40) {
+              valueHash[name]["ranknums"]["rank 21 - 40:"] += 1;
+          }
+          else if (r >= 41 && r <=60) {
+                valueHash[name]["ranknums"]["rank 41 - 60:"] += 1;
+          }
+          else if (r >= 61 && r <=80) {
+                valueHash[name]["ranknums"]["rank 61 - 80:"] += 1;
+          }
+          else if (r >= 81 && r <=100) {
+                valueHash[name]["ranknums"]["rank 81 - 100:"] += 1;            
+          }
         max = Math.max (max, valueHash[name]["count"])
         min = Math.min (min, valueHash[name]["count"])
         ranking[d.university_name] = d.world_rank
       }
      });
       color.domain([min,max]);
-      console.log(valueHash.China.count);
-      console.log(max)
+      // console.log(valueHash);
+      // console.log(max)
       //console.log("Yale University:" + ranking["Yale University"])
       var country = g.selectAll(".country").data(countries);
   
@@ -104,23 +126,26 @@ d3.csv("metadata/timesData.csv", function(err, data) {
             html += "</span>";
             html += "<br><br>";
             if (d.properties.name in valueHash) {
-              var array = valueHash[d.properties.name]["names"]
+              var dict = valueHash[d.properties.name]["ranknums"]
+              // console.log(dict)
+              for (var p in dict) {
                 html += "<span class=\"tooltip_key\">";
-                html += "University Name";
+                html += p;
                 html += "</span>";
-                html += "<span class=\"tooltip_title\">";
-                html += "Ranking";
+                html += "<span class=\"tooltip_value\">";
+                html += dict[p];
                 html += "</span>";
                 html += "<br>"
-                for(var i in array) {
-                  html += "<span class=\"tooltip_key\">";
-                  html += array[i];
-                  html += "</span>";
-                  html += "<span class=\"tooltip_value\">";
-                  html += ranking[array[i]];
-                  html += "</span>";
-                  html += "<br>"
-                }
+              }
+                // for(var i in array) {
+                //   html += "<span class=\"tooltip_key\">";
+                //   html += array[i];
+                //   html += "</span>";
+                //   html += "<span class=\"tooltip_value\">";
+                //   html += ranking[array[i]];
+                //   html += "</span>";
+                //   html += "<br>"
+                // }
             }
             html += "";
             html += "</div>";
