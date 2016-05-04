@@ -8,7 +8,14 @@ d3.csv("metadata/timesData.csv", function(err, data) {
   var international_student_min = 100
   var international_student_max = -1
   data.forEach(function(d){
-    // d.year = parseDate(d.year);
+    d.year = +d.year;
+    d.world_rank = +d.world_rank
+    d.total_score = +d.total_score
+    d.teaching = +d.teaching
+    d.international_students = +d.international_students
+    d.research = +d.research
+    d.citations = +d.citations
+
     if (!(d.university_name in universities)) {
       universities[d.university_name] = {'rank' : [],'totoal_score':[], 'teaching' :[], 'research': [], 'citations': [], 
                         'international_students':[]}
@@ -22,11 +29,27 @@ d3.csv("metadata/timesData.csv", function(err, data) {
     international_student_min = Math.min(international_student_min, d.international_students)
     international_student_max = Math.max(international_student_max, d.international_students)
   });
-  // {a:{'rank':[{"year:2016,val = 1"}]}}
+  var option_select1 = d3.select('#selectors1').append("select")
+          .attr("class", "option-select");
+  var option_select2 = d3.select('#selectors2').append("select")
+          .attr("class", "option-select");
+  var fields = Object.keys(universities)
+  for (var i = 0; i < fields.length; i++) {
+          var opt1 = option_select1.append("option")
+              .attr("value", fields[i])
+              .text(fields[i]);
+          if (fields[i] === "Harvard University") {
+            opt1.attr("selected", "true");
+          }
+          var opt2 = option_select2.append("option")
+              .attr("value", fields[i])
+              .text(fields[i]);
+          if (fields[i] === "Peking University") {
+            opt2.attr("selected", "true");
+          }
+  }
 
-  function drawlinegraph (u1,u2,aspect) {
-      
-var margin = {top: 20, right: 150, bottom: 20, left: 50},
+  var margin = {top: 20, right: 150, bottom: 20, left: 50},
     width = 400 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
@@ -55,12 +78,16 @@ var line = d3.svg.line()
       .x(function(d) { return xScale(+d.year); })
       .y(function(d) { return yScale(+d.val); });
 
-var svg = d3.select(svg_map[aspect]).append("svg")
+
+
+
+  function drawlinegraph (u1,u2,aspect) {
+      
+      var svg = d3.select(svg_map[aspect]).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
         // u = [u1,u2]
       color.domain([u1,u2]);
       var univers = [{name : u1, values : universities[u1][aspect]},
@@ -106,12 +133,41 @@ var svg = d3.select(svg_map[aspect]).append("svg")
         .attr("transform", function(d) { return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")"; })
         .attr("x", 3)
         .attr("dy", ".35em")
-        .text(function(d) { return d.name; });
+        .text(function(d) { console.log(d.name);return d.name; });
+      // svg.selectAll(".dot")
+      // .data(univers)
+      // .enter().append("circle")
+      // .attr("class", "datapoint")
+      // .attr("r", 2)
+      // .attr("cx", function(d) {return xScale(d.values[0].year); })
+      // .attr("cy", function(d) {return yScale(d.values[0].val); })
+      // .attr("fill", function(d) { return color(d.name);});
+      // .on("mouseover", function(d) {
+      //     console.log(d.values[0].val)
+      //     tooltip3.transition()
+      //          .duration(200)
+      //          .style("opacity", .9);
+      //     tooltip3.html(d.values[0].val)
+      //          .style("left", d3.select(this).attr("cx") + "px")
+      //          .style("top", d3.select(this).attr("cy") + "px");
+      // });
+      // .on("mouseout", function(d) {
+      //     tooltip.transition()
+      //          .duration(500)
+      //          .style("opacity", 0);
+      // });
 
    }
   aspects = ['rank','totoal_score', 'teaching', 'research', 'citations','international_students']
   for (var i = 0; i < aspects.length; i++) {
     drawlinegraph("Harvard University","Peking University",aspects[i])  
   }
+  d3.select("#submit")
+    .on("click",function(d){
+        d3.event.preventDefault();
+        for (var i = 0; i < aspects.length; i++) {
+         drawlinegraph($("#selectors1").find(".option-select").val(),$("#selectors2").find(".option-select").val(),aspects[i]);
+        }
+    })
   
 });
