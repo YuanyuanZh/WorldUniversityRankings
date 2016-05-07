@@ -169,7 +169,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             })
             .attr("x", 10)
             .attr("dy", ".35em")
-            .style("font-size","13px")
+            .style("font-size","11px")
             .text(function (d) {
                 return d.name;
             });
