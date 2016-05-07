@@ -9,12 +9,12 @@ h2, p {
 }
 
 #sm_select #selector {
-    width: 375px;
-    height: 25px;
+    width:375px;
+    height:25px;
     line-height: 25px;
     position: relative;
-    border: 1px solid #999;
-    font-size: 11px;
+    border:1px solid #999;
+    font-size:11px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     overflow: hidden;
@@ -24,11 +24,11 @@ h2, p {
 #sm_select a {
     display: block;
     float: left;
-    width: 16.67%;
+    width: 16.666%;
     text-align: center;
     position: relative;
     text-decoration: none;
-    color: #aaa;
+    color:#aaa;
     background-color: #ddd;
 }
 

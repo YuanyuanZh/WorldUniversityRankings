@@ -393,9 +393,9 @@ a:hover {
   /*margin:0 auto;*/
   float: left;
   margin-left: 280px;
-  margin-right: 40;
+  margin-right: 40px;
   overflow: hidden;
-  position: left;
+  /*position: left;*/
 }
 
 #sy_select #sy_selector {
@@ -414,7 +414,7 @@ a:hover {
 #sy_select a {
   display: block;
   float: left;
-  width: 16.67%;
+  width: 16.66%;
   text-align: center;
   position: relative;
   text-decoration: none;
@@ -441,14 +441,14 @@ a:hover {
   /*margin-left: 800px;*/
   margin-right: 250px;
   overflow: hidden;
-  position: right;
+  /*position: right;*/
 }
 
 #sr_select #sr_selector {
   width:200px;
   height:25px;
   line-height: 25px;
-  position: right;
+  /*position: right;*/
   border:1px solid #999;
   font-size:11px;
   -webkit-border-radius: 5px;
