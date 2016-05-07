@@ -50,7 +50,7 @@ a:hover {
 }
 
 /*help content1, color does not work*/
-#pc div#tooltip2 {
+#pc div#tooltip_pc {
     position: absolute;
     font-size: 13px;
 
@@ -61,7 +61,7 @@ a:hover {
 }
 
 /* help content*/
-#pc div#tooltip2 div {
+#pc div#tooltip_pc div {
     width: 200px;
     height: 60px;
     background-color: #fff;
@@ -73,13 +73,13 @@ a:hover {
 }
 
 /* help tooltip*/
-#pc div#tooltip2.visible {
+#pc div#tooltip_pc.visible {
 
     display: block;
     color: #fff;
 }
 /*help title*/
-#pc div#tooltip2 h4 {
+#pc div#tooltip_pc h4 {
     margin: 2px;
     font-weight: 400;
     font-size: 12px;

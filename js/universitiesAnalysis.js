@@ -49,7 +49,7 @@ function UniversityAnalysis(data,options) {
 	];
 
 	var tooltip2=d3.select(options.container)
-					.select("#tooltip2");
+					.select("#tooltip_pc");
 
 	var svg=d3.select(options.container)
 				.style("width",WIDTH+"px")	

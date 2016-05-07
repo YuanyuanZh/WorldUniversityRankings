@@ -8,17 +8,17 @@ svg_map = {
 }
 d3.csv("metadata/timesData.csv", function (err, data) {
 
-    var universities = {}
-    var international_student_min = 100
-    var international_student_max = -1
+    var universities = {};
+    var international_student_min = 100;
+    var international_student_max = -1;
     data.forEach(function (d) {
         d.year = +d.year;
-        d.world_rank = +d.world_rank
-        d.total_score = +d.total_score
-        d.teaching = +d.teaching
-        d.international_students = +d.international_students
-        d.research = +d.research
-        d.citations = +d.citations
+        d.world_rank = +d.world_rank;
+        d.total_score = +d.total_score;
+        d.teaching = +d.teaching;
+        d.international_students = +d.international_students;
+        d.research = +d.research;
+        d.citations = +d.citations;
 
         if (!(d.university_name in universities)) {
             universities[d.university_name] = {
@@ -26,20 +26,24 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 'international_students': []
             }
         }
-        universities[d.university_name]['rank'].push({year: d.year, val: d.world_rank})
-        universities[d.university_name]['totoal_score'].push({year: d.year, val: d.total_score})
-        universities[d.university_name]['teaching'].push({year: d.year, val: d.teaching})
-        universities[d.university_name]['international_students'].push({year: d.year, val: d.international_students})
-        universities[d.university_name]['research'].push({year: d.year, val: d.research})
-        universities[d.university_name]['citations'].push({year: d.year, val: d.citations})
-        international_student_min = Math.min(international_student_min, d.international_students)
-        international_student_max = Math.max(international_student_max, d.international_students)
+        universities[d.university_name]['rank'].push({year: d.year, val: d.world_rank});
+        universities[d.university_name]['totoal_score'].push({year: d.year, val: d.total_score});
+        universities[d.university_name]['teaching'].push({year: d.year, val: d.teaching});
+        universities[d.university_name]['international_students'].push({year: d.year, val: d.international_students});
+        universities[d.university_name]['research'].push({year: d.year, val: d.research});
+        universities[d.university_name]['citations'].push({year: d.year, val: d.citations});
+        international_student_min = Math.min(international_student_min, d.international_students);
+        international_student_max = Math.max(international_student_max, d.international_students);
     });
     var option_select1 = d3.select('#selectors1').append("select")
-        .attr("class", "option-select");
+        .attr("class", "option-select")
+        .style("font-size","13px")
+        .style("font-weight","normal");
     var option_select2 = d3.select('#selectors2').append("select")
-        .attr("class", "option-select");
-    var fields = Object.keys(universities)
+        .attr("class", "option-select")
+        .style("font-size","13px")
+        .style("font-weight","normal");
+    var fields = Object.keys(universities);
     for (var i = 0; i < fields.length; i++) {
         var opt1 = option_select1.append("option")
             .attr("value", fields[i])
@@ -55,8 +59,8 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         }
     }
 
-    var margin = {top: 20, right: 150, bottom: 20, left: 50},
-        width = 400 - margin.left - margin.right,
+    var margin = {top: 20, right: 250, bottom: 40, left: 50},
+        width = 500 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
 
 
@@ -67,7 +71,8 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     var yScale = d3.scale.linear()
         .range([height, 0]);
 
-    var color = d3.scale.category10();
+    //var color = d3.scale.category10();
+    var color = d3.scale.ordinal().range(["#516DFF","#b300b3"]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -80,7 +85,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         .ticks(5);
 
     var line = d3.svg.line()
-        .interpolate("basis")
+        //.interpolate("basis")
         .x(function (d) {
             return xScale(+d.year);
         })
@@ -99,13 +104,25 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         // u = [u1,u2]
         color.domain([u1, u2]);
         var univers = [{name: u1, values: universities[u1][aspect]},
-            {name: u2, values: universities[u2][aspect]}]
+            {name: u2, values: universities[u2][aspect]}];
+        //create dots data
+        var dots_data = [];
+        for(var i = 0; i < univers.length; i++){
+            var scores = univers[i];
+            for (var j = 0; j < scores.values.length; j++){
+                dots_data.push({name: scores.name, year:scores.values[j].year, val:scores.values[j].val});
+            }
+        }
         // console.log(univers);
         // x.domain([2011,2016]);
         xScale.domain(d3.extent(data, function (d) {
             return d.year;
         }));
-        yScale.domain(domain_map[aspect])
+        yScale.domain(domain_map[aspect]);
+        var tooltip = d3.select(svg_map[aspect]).append("div")
+            .attr("class", "sm_tooltip")
+            .style("opacity", 0);
+
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
@@ -113,8 +130,9 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .append("text")
             .attr("class", "label")
             .attr("x", width / 2)
-            .attr("y", 30)
+            .attr("y", 35)
             .style("text-anchor", "end")
+            .style("font-size","13px")
             .text("Year");
 
         svg.append("g")
@@ -124,6 +142,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .attr("transform", "translate(-" + 30 + "," + (height / 2) + ") rotate(-90)")
             .attr("class", "label")
             .style("text-anchor", "middle")
+            .style("font-size","13px")
             .text(aspect);
 
 
@@ -148,33 +167,59 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .attr("transform", function (d) {
                 return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")";
             })
-            .attr("x", 3)
+            .attr("x", 10)
             .attr("dy", ".35em")
+            .style("font-size","13px")
             .text(function (d) {
                 return d.name;
             });
-        // svg.selectAll(".dot")
-        // .data(univers)
-        // .enter().append("circle")
-        // .attr("class", "datapoint")
-        // .attr("r", 2)
-        // .attr("cx", function(d) {return xScale(d.values[0].year); })
-        // .attr("cy", function(d) {return yScale(d.values[0].val); })
-        // .attr("fill", function(d) { return color(d.name);});
-        // .on("mouseover", function(d) {
-        //     console.log(d.values[0].val)
-        //     tooltip3.transition()
-        //          .duration(200)
-        //          .style("opacity", .9);
-        //     tooltip3.html(d.values[0].val)
-        //          .style("left", d3.select(this).attr("cx") + "px")
-        //          .style("top", d3.select(this).attr("cy") + "px");
-        // });
-        // .on("mouseout", function(d) {
-        //     tooltip.transition()
-        //          .duration(500)
-        //          .style("opacity", 0);
-        // });
+        svg.selectAll(".dot")
+            .data(dots_data)
+            .enter().append("circle")
+            .attr("class", "datapoint")
+            .attr("r", 2)
+            .attr("cx", function (d) {
+                return xScale(d.year);
+            })
+            .attr("cy", function (d) {
+                return yScale(d.val);
+            })
+            .attr("fill", function (d) {
+                return color(d.name);
+            })
+            .on("mouseover", function (d) {
+                console.log(d.val);
+                //console.log(d3.mouse(this));
+                //console.log($(svg_map[aspect]).offset().left);
+                //console.log($(svg_map[aspect]).offset().top);
+                //console.log(window.pageXOffset);
+                //console.log(window.pageYOffset);
+                //
+                //var matrix = this.getScreenCTM()
+                //    .translate(+this.getAttribute("cx"), +this.getAttribute("cy"));
+                //console.log(matrix.e);
+                //console.log(matrix.f);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity",.9);
+                tooltip.html(d.val)
+                    //.attr("transform", function (d) {
+                    //    return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")";
+                    //})
+                    //.style("left", (d3.event.pageX + 5) + "px")
+                    //.style("top", (d3.event.pageY - 28) + "px");
+                    //.style("left", (parseInt(d3.select(this).attr("cx")) + $(svg_map[aspect]).offset().left) + "px")
+                    //.style("top", (parseInt(d3.select(this).attr("cy")) + $(svg_map[aspect]).offset().top) + "px");
+                    //.style("left", (window.pageXOffset + matrix.e + 15) + "px")
+                    //.style("top", (window.pageYOffset + matrix.f + 30) + "px");
+                    .style("left", (parseInt(d3.select(this).attr("cx"))+ 50) + "px")
+                    .style("top", (parseInt(d3.select(this).attr("cy")) - height -65) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 0);
+            });
 
     }
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>D3 - Top 100 Universities Ranking</title>
-    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/pc.css">
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -19,92 +19,103 @@
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script src="js/tree.js"></script>
-  </head>
+</head>
 
 <body>
-<h2 >Top 100 Word Universities Rankings</h2>
-  <p><br><font face="verdana"> Of all the universities in the world, which are the best?<br>
-  <br>From below geo visualization, you can get which country has most Top 100 universities.<br><br> Each country will be filled with a color, the darker, the more top 100 universities in that country.<br><br>Select year and move your mouse, you will get the answer. </front></p>
-<div id="tooltip"></div> <!-- div to hold tooltip. -->
+<h2>Top 100 Word Universities Rankings</h2>
+
+<p><br><font face="verdana"> Of all the universities in the world, which are the best?<br>
+    <br>From below geo visualization, you can get which country has most Top 100 universities.<br><br> Each country will
+    be filled with a color, the darker, the more top 100 universities in that country.<br><br>Select year and move your
+    mouse, you will get the answer. </font></p>
+
+<div id="tooltip"></div>
+<!-- div to hold tooltip. -->
 <div id="sm">
-      <div id="sm_select">
+    <div id="sm_select">
         <div id="selector">
-          <a id="year16" class="selected">2016</a>
-          <a id="year15">2015</a> 
-          <a id="year14">2014</a> 
-          <a id="year13">2013</a> 
-          <a id="year12">2012</a> 
-          <a id="year11">2011</a> 
+            <a id="year16" class="selected">2016</a>
+            <a id="year15">2015</a>
+            <a id="year14">2014</a>
+            <a id="year13">2013</a>
+            <a id="year12">2012</a>
+            <a id="year11">2011</a>
         </div>
-      </div>
+    </div>
 </div>
-<div style="width: 768px;height: 600px" id ="canvas-svg"></div>
+<div style="width: 768px;height: 600px" id="canvas-svg"></div>
 <div id="tooltip-container"></div>
 <p><br><br><font face="verdana"> Want to known universities in your target country?<br>
-  <br>Search universites by country nodes in the collapse tree.<br><br> Unfold the country node, all universities in top 100 will be listed.<br><br>Choose your target university, you will get up to 6 years ranking info.</front></p>
-<div id ="tree-svg"></div>
+    <br>Search universites by country nodes in the collapse tree.<br><br> Unfold the country node, all universities in
+    top 100 will be listed.<br><br>Choose your target university, you will get up to 6 years ranking info.</font></p>
+
+<div id="tree-svg"></div>
 <p><br><font face="verdana"> Want more detailed information of each top 100 university?<br>
-  <br>Below parallel visualization can let you get multiaspect data of each university,not only ranking.<br><br> Select year and range of ranking, move your mouse onto the university you are interested, detail figures will be highlighted.</front></p>
+    <br>Below parallel visualization can let you get multiaspect data of each university,not only ranking.<br><br>
+    Select year and range of ranking, move your mouse onto the university you are interested, detail figures will be
+    highlighted.</font></p>
+
 <div id="wrapper">
     <div id="header">
     </div>
     <div id="sy">
-      <div id="sy_select">
-        <div id="sy_selector">
-          <a id="year2016" class="selected">2016</a>
-          <a id="year2015" >2015</a> 
-          <a id="year2014">2014</a> 
-          <a id="year2013">2013</a> 
-          <a id="year2012">2012</a> 
-          <a id="year2011">2011</a> 
+        <div id="sy_select">
+            <div id="sy_selector">
+                <a id="year2016" class="selected">2016</a>
+                <a id="year2015">2015</a>
+                <a id="year2014">2014</a>
+                <a id="year2013">2013</a>
+                <a id="year2012">2012</a>
+                <a id="year2011">2011</a>
+            </div>
         </div>
-      </div>
-      <div id="sr_select">
-        <div id="sr_selector">
-          <a id="first" class="selected">1-25</a>
-          <a id="second">26-50</a> 
-          <a id="third">51-75</a> 
-          <a id="fourth">76-100</a> 
+        <div id="sr_select">
+            <div id="sr_selector">
+                <a id="first" class="selected">1-25</a>
+                <a id="second">26-50</a>
+                <a id="third">51-75</a>
+                <a id="fourth">76-100</a>
+            </div>
         </div>
-      </div>
     </div>
     <div id="pc">
-      <div id="tooltip2">
-        <div></div>
-      </div>
+        <div id="tooltip_pc">
+            <div></div>
+        </div>
     </div>
     <br/><br/>
-  </div>
+</div>
 <div>
-<p><br><font face="verdana"> Already have your target universities?<br>
-  <br>Use our search bar to compare two universities.<br><br> You will see two universities comparision in different aspects.<br></front><br></p>
-<div>
-<div id = "search-svg">
-  <div  id = "search-bar" style="height:100px;width:80%;float:left;margin-left: 15%">
-  <label id="selectors1"></label>
-  <label id="selectors2"></label>
-  <button id="submit" style = "background-color: #fff">compare</button>
-  </div>
+    <p><br/><font face="verdana"> Already have your target universities?<br/>
+        <br>Use our search bar to compare two universities.<br><br> You will see two universities comparision in
+        different aspects.<br/></font><br/></p>
 
-<div id="s-left" style="height:800px;width:50%;float:left">
-  <div id = "s1" style="height:250px;width:100%;float:left">
-  </div>
-  <div id = "s2" style="height:250px;width:100%;float:left">
-  </div>
-  <div id = "s3" style="height:250px;width:100%;float:left">
-  </div>
+
+    <div id="search-svg">
+        <div id="search-bar" style="height:100px;width:80%;float:left;margin-left: 15%">
+            <label id="selectors1"></label>
+            <label id="selectors2"></label>
+            <button id="submit" style="background-color: #fff;font-size:14px">compare</button>
+        </div>
+
+        <div id="s-left" style="height:800px;width:50%;float:left">
+            <div id="s1" style="height:250px;width:100%;float:left">
+            </div>
+            <div id="s2" style="height:250px;width:100%;float:left">
+            </div>
+            <div id="s3" style="height:250px;width:100%;float:left">
+            </div>
+        </div>
+
+        <div id="s-right" style="height:800px;width:50%;float:right">
+            <div id="s4" style="height:250px;width:100%;float:right">
+            </div>
+            <div id="s5" style="height:250px;width:100%;float:right">
+            </div>
+            <div id="s6" style="height:250px;width:100%;float:right">
+            </div>
+        </div>
+    </div>
 </div>
-
-<div id="s-right" style="height:800px;width:50%;float:right">
-  <div id = "s4" style="height:250px;width:100%;float:right">
-  </div>
-  <div id = "s5" style="height:250px;width:100%;float:right">
-  </div>
-  <div id = "s6" style="height:250px;width:100%;float:right">
-  </div>
-</div>
-</div>
-
-
 </body>
 </html>
