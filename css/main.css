@@ -1,160 +1,172 @@
-h2,p {
-  text-align: center;
+h2, p {
+    text-align: center;
 }
+
 #sm_select {
-  width: 400px;
-  margin:0 auto;
-  overflow: hidden;
+    width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 #sm_select #selector {
-  width:375px;
-  height:25px;
-  line-height: 25px;
-  position: relative;
-  border:1px solid #999;
-  font-size:11px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  overflow: hidden;
-  float: left;
+    width: 375px;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    border: 1px solid #999;
+    font-size: 11px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
 }
 
 #sm_select a {
-  display: block;
-  float: left;
-  width: 16.67%;
-  text-align: center;
-  position: relative;
-  text-decoration: none;
-  color:#aaa;
-  background-color: #ddd;
+    display: block;
+    float: left;
+    width: 16.67%;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    color: #aaa;
+    background-color: #ddd;
 }
+
 #sm_select a.selected {
-  color:#000;
-  background-color: #fff;
-  font-weight: 700;
-  font-size:12px;
-  cursor: default;
+    color: #000;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: default;
 }
+
 #sm_select a:hover {
-  color:#006AAD;
+    color: #006AAD;
 }
 
 #canvas {
 }
 
 #canvas-svg {
-  margin:10px auto;
+    margin: 10px auto;
 }
+
 #tree-svg {
-  margin: 10px auto;
+    margin: 10px auto;
 }
 
 .land {
-  fill: #222;
+    fill: #222;
 }
 
 .boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1px;
 }
 
 #tooltip-container {
-  position: absolute;
-  background-color: #fff;
-  color: #000;
-  padding: 10px;
-  border: 1px solid;
-  display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid;
+    display: none;
 }
 
 .tooltip_key {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .tooltip_value {
-  margin-left: 20px;
-  float: right;
+    margin-left: 20px;
+    float: right;
 }
+
 .tooltip_title {
-  font-weight: bold;
-  margin-left: 20px;
-  float: right;
+    font-weight: bold;
+    margin-left: 20px;
+    float: right;
 }
+
 body {
-  background: #fcfcfa;
+    background: #fcfcfa;
 }
+
 #tooltip-container {
-  position: absolute;
-  background-color: #fff;
-  color: #000;
-  padding: 10px;
-  border: 1px solid;
-  display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid;
+    display: none;
 }
+
 .stroke {
-  fill: none;
-  stroke: #000;
-  stroke-width: 3px;
+    fill: none;
+    stroke: #000;
+    stroke-width: 3px;
 }
 
 .fill {
-  fill: #fff;
+    fill: #fff;
 }
 
 .graticule {
-  fill: none;
-  stroke: #777;
-  stroke-width: .5px;
-  stroke-opacity: .5;
+    fill: none;
+    stroke: #777;
+    stroke-width: .5px;
+    stroke-opacity: .5;
 }
 
 .land {
-  fill: #222;
+    fill: #222;
 }
 
 .boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1px;
 }
+
 .node {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .node circle {
-  fill: #fff;
-  stroke: #A233A2;
-  stroke-width: 1.5px;
+    fill: #fff;
+    stroke: #A233A2;
+    stroke-width: 1.5px;
 }
 
 .node text {
-  font: 10px sans-serif;
+    font: 14px sans-serif;
 }
 
 #search-svg {
-  font: 10px sans-serif;
-  width:100%;
-  /*min-width: 960px;*/
-  position: relative;
-  margin-left: 10%
-  /*margin-right: 10%*/
+    font: 10px sans-serif;
+    width: 100%;
+    /*min-width: 960px;*/
+    position: relative;
+    margin-left: 10%
+    /*margin-right: 10%*/
 }
+
 .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
 }
+
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
+
 .axis text {
-  font: 10px sans-serif;
+    font: 10px sans-serif;
 }
 
 /*.x.axis path {
@@ -162,10 +174,11 @@ body {
 }*/
 
 .line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
+
 #search-svg .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -175,4 +188,16 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.sm_tooltip {
+    position: relative;
+    width: 30px;
+    height: 16px;
+    pointer-events: none;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+    border: 0px solid;
+    font-size: 13px;
 }

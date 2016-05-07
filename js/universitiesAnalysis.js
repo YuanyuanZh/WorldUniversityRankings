@@ -21,9 +21,6 @@ function UniversityAnalysis(data,options) {
 						return o[col]
 					});
 					r.university_name=leaves[0].university_name;
-					// r.year=leaves[0].year;
-					// r.name=leaves[0]["repository_language"];
-					// r.name2=leaves[0]["repository_language"];
 				})
 				return r;
 			})
@@ -52,47 +49,13 @@ function UniversityAnalysis(data,options) {
 	];
 
 	var tooltip2=d3.select(options.container)
-					.select("#tooltip2");
+					.select("#tooltip_pc");
 
 	var svg=d3.select(options.container)
 				.style("width",WIDTH+"px")	
 				.append("svg")
 				.attr("width",WIDTH)
 				.attr("height",HEIGHT);
-
-// /*padding in the rect of columns*/
-// 	var defs=svg.append("defs")
-// 			.append("pattern")
-// 				.attr({
-// 					id:"diagonalHatch",
-// 					width:3,
-// 					height:3,
-// 					patternTransform:"rotate(-45 0 0)",
-// 					patternUnits:"userSpaceOnUse"
-// 				});
-// 	defs.append("rect")
-// 			.attr({
-// 				x:0,
-// 				y:0,
-// 				width:3,
-// 				height:3
-// 			})
-// 			.style({
-// 				stroke:"none",
-// 				fill:"#ffe"
-// 			})
-// 	defs.append("line")
-// 			.attr({
-// 				x0:0,
-// 				y1:0,
-// 				x2:0,
-// 				y2:3
-// 			})
-// 			.style({
-// 				stroke:"#A06535",
-// 				"stroke-opacity":1,
-// 				"stroke-width":1
-// 			})
 
 
 	var xscale=d3.scale.ordinal().domain(options.columns).rangePoints([90,WIDTH-(margins.left+margins.right+padding.left+padding.right)]);
@@ -278,13 +241,13 @@ function UniversityAnalysis(data,options) {
 			.on("mouseover",function(d,i){
 				tooltip2
 					.style("left",function(){
-						var x=xscale(d)+margins.left+padding.left;
+						var x=xscale(d)+margins.left+padding.left-10;
 						
 						if(d!=options.title_column) {
 							x+=marker_width[1]/2;
 						}
 						if(i>options.columns.length-2) {
-							x-=(marker_width[1]+180-20);
+							x-=(marker_width[1]+180);
 						}
 						return x+"px"
 					})
@@ -847,7 +810,7 @@ function UniversityAnalysis(data,options) {
 					if(d.column=="world_rank") {
 						return -30;
 					}
-					return d.text_width/2;
+					return d.text_width/2+5;
 				})
 				.attr("width",function(d){
 					if(d.column==options.title_column) {
