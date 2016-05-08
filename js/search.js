@@ -59,10 +59,13 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         }
     }
 
-    var margin = {top: 20, right: 250, bottom: 40, left: 50},
-        width = 500 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
-
+    var margin = {top: 20, right: 350, bottom: 40, left: 50};
+    var width = 600 - margin.left - margin.right;
+    var height = 200 - margin.top - margin.bottom;
+    var legendLeft = 600 - margin.right;
+    var legendTop = margin.top;
+    var legendRectSize = 11;
+    var legendSpacing = 10;
 
     var xScale = d3.scale.linear()
         .range([0, width]);
@@ -159,20 +162,28 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .style("stroke", function (d) {
                 return color(d.name);
             });
-
-        univer.append("text")
-            .datum(function (d) {
-                return {name: d.name, value: d.values[d.values.length - 1]};
-            })
-            .attr("transform", function (d) {
-                return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")";
-            })
-            .attr("x", 10)
-            .attr("dy", ".35em")
-            .style("font-size","11px")
-            .text(function (d) {
-                return d.name;
+        var legend = svg.selectAll('.legend')
+            .data(color.domain())
+            .enter()
+            .append('g')
+            .attr('class', 'legend')
+            .attr('transform', function(d, i) {
+                var height = legendRectSize + legendSpacing;
+                var offset =  height * color.domain().length / 2;
+                var horz = legendLeft;
+                var vert = legendTop + i * height ;
+                return 'translate(' + horz + ',' + vert + ')';
             });
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .style('fill', color)
+            .style('stroke', color);
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize)
+            .style("font-size","11px")
+            .text(function(d) { return d; });
         svg.selectAll(".dot")
             .data(dots_data)
             .enter().append("circle")
@@ -188,30 +199,11 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 return color(d.name);
             })
             .on("mouseover", function (d) {
-                console.log(d.val);
-                //console.log(d3.mouse(this));
-                //console.log($(svg_map[aspect]).offset().left);
-                //console.log($(svg_map[aspect]).offset().top);
-                //console.log(window.pageXOffset);
-                //console.log(window.pageYOffset);
-                //
-                //var matrix = this.getScreenCTM()
-                //    .translate(+this.getAttribute("cx"), +this.getAttribute("cy"));
-                //console.log(matrix.e);
-                //console.log(matrix.f);
+                //console.log(d.val);
                 tooltip.transition()
                     .duration(200)
                     .style("opacity",.9);
                 tooltip.html(d.val)
-                    //.attr("transform", function (d) {
-                    //    return "translate(" + xScale(d.value.year) + "," + yScale(d.value.val) + ")";
-                    //})
-                    //.style("left", (d3.event.pageX + 5) + "px")
-                    //.style("top", (d3.event.pageY - 28) + "px");
-                    //.style("left", (parseInt(d3.select(this).attr("cx")) + $(svg_map[aspect]).offset().left) + "px")
-                    //.style("top", (parseInt(d3.select(this).attr("cy")) + $(svg_map[aspect]).offset().top) + "px");
-                    //.style("left", (window.pageXOffset + matrix.e + 15) + "px")
-                    //.style("top", (window.pageYOffset + matrix.f + 30) + "px");
                     .style("left", (parseInt(d3.select(this).attr("cx"))+ 50) + "px")
                     .style("top", (parseInt(d3.select(this).attr("cy")) - height -65) + "px");
             })
