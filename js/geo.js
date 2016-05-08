@@ -193,7 +193,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             d3.select(this).classed("selected", true);
 
             selectYear = d;
-            document.getElementById('pc').innerHTML = "<div id='tooltip2'><div></div></div>";
+            document.getElementById('pc').innerHTML = "<div id='tooltip_pc'><div></div></div>";
             AynalyseUniversityInfo(selectYear, selectSegment);
         });
 
@@ -220,7 +220,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 case "76-100" :
                     selectSegment = 3;
             }
-            document.getElementById('pc').innerHTML = "<div id='tooltip2'><div></div></div>";
+            document.getElementById('pc').innerHTML = "<div id='tooltip_pc'><div></div></div>";
             AynalyseUniversityInfo(selectYear, selectSegment);
         });
 
