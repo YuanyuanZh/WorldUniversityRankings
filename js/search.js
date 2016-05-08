@@ -64,7 +64,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     var height = 200 - margin.top - margin.bottom;
     var legendLeft = 600 - margin.right;
     var legendTop = margin.top;
-    var legendRectSize = 11;
+    var legendRectSize = 8;
     var legendSpacing = 10;
 
     var xScale = d3.scale.linear()
