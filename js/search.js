@@ -59,10 +59,10 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         }
     }
 
-    var margin = {top: 20, right: 350, bottom: 40, left: 50};
-    var width = 600 - margin.left - margin.right;
+    var margin = {top: 20, right: 20, bottom: 40, left: 80};
+    var width = window.innerWidth * 0.3 - margin.left - margin.right;
     var height = 200 - margin.top - margin.bottom;
-    var legendLeft = 600 - margin.right;
+    // var legendLeft = 600 - margin.right;
     var legendTop = margin.top;
     var legendRectSize = 8;
     var legendSpacing = 10;
@@ -162,28 +162,28 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .style("stroke", function (d) {
                 return color(d.name);
             });
-        var legend = svg.selectAll('.legend')
-            .data(color.domain())
-            .enter()
-            .append('g')
-            .attr('class', 'legend')
-            .attr('transform', function(d, i) {
-                var height = legendRectSize + legendSpacing;
-                var offset =  height * color.domain().length / 2;
-                var horz = legendLeft;
-                var vert = legendTop + i * height ;
-                return 'translate(' + horz + ',' + vert + ')';
-            });
-        legend.append('rect')
-            .attr('width', legendRectSize)
-            .attr('height', legendRectSize)
-            .style('fill', color)
-            .style('stroke', color);
-        legend.append('text')
-            .attr('x', legendRectSize + legendSpacing)
-            .attr('y', legendRectSize)
-            .style("font-size","11px")
-            .text(function(d) { return d; });
+        // var legend = svg.selectAll('.legend')
+        //     .data(color.domain())
+        //     .enter()
+        //     .append('g')
+        //     .attr('class', 'legend')
+        //     .attr('transform', function(d, i) {
+        //         var height = legendRectSize + legendSpacing;
+        //         var offset =  height * color.domain().length / 2;
+        //         var horz = legendLeft;
+        //         var vert = legendTop + i * height ;
+        //         return 'translate(' + horz + ',' + vert + ')';
+        //     });
+        // legend.append('rect')
+        //     .attr('width', legendRectSize)
+        //     .attr('height', legendRectSize)
+        //     .style('fill', color)
+        //     .style('stroke', color);
+        // legend.append('text')
+        //     .attr('x', legendRectSize + legendSpacing)
+        //     .attr('y', legendRectSize)
+        //     .style("font-size","11px")
+        //     .text(function(d) { return d; });
         svg.selectAll(".dot")
             .data(dots_data)
             .enter().append("circle")

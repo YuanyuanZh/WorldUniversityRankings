@@ -1,7 +1,7 @@
 d3.csv("metadata/timesData.csv", function (err, data) {
 
     var width = 768,
-        height = 568;
+        height = 468;
 
     var color = d3.scale.linear()
         .range(["#EEDCEC", "#5E07A1"])

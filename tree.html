@@ -14,34 +14,19 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
-    <script src="js/geo.js"></script>
+    <script src="js/tree.js"></script>
 </head>
 
 <body>
-<h2>Top 100 Word Universities Rankings</h2>
+<h2>Top 100 World Universities Rankings</h2>
 <ul class="nav nav-tabs" style = "margin-top: 50px;margin-left: 25%;margin-right: 25%">
-  <li role="presentation" class="active"><a href="index.html"><font face="verdana" color="#CD63CD">Overview</font></a></li>
-  <li role="presentation"><a href="tree.html"><font face="verdana" color="black">Find Universities</font></a></li>
+  <li role="presentation" class="active"><a href="index.html"><font face="verdana" color="black">Overview</font></a></li>
+  <li role="presentation"><a href="tree.html"><font face="verdana" color="#CD63CD">Find Universities</font></a></li>
   <li role="presentation"><a href="parallel.html"><font face="verdana" color="black">Investigate Universities</font></a></li>
   <li role="presentation"><a href="search.html"><font face="verdana" color="black">Compare Universities</font></a></li>
 </ul>
 
-<div id="tooltip"></div>
-<!-- div to hold tooltip. -->
-<div id="sm" >
-    <div id="sm_select">
-        <div id="selector" style = "margin-top:20px">
-            <a id="year16" class="selected">2016</a>
-            <a id="year15">2015</a>
-            <a id="year14">2014</a>
-            <a id="year13">2013</a>
-            <a id="year12">2012</a>
-            <a id="year11">2011</a>
-        </div>
-    </div>
-</div>
-<div style="width: 768px;height: 600px" id="canvas-svg"></div>
-<div id="tooltip-container"></div>
+<div id="tree-svg" ></div>
 
 </body>
 </html>
