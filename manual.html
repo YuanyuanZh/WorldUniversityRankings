@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+<style>
+.guide {
+ margin-top: 50px;
+ margin-left: 20%;
+ margin-right: 20%
+}
+</style>
 <head>
     <meta charset="utf-8">
     <title>D3 - Top 100 World Universities Ranking</title>
@@ -11,23 +18,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
-    <script src="//d3js.org/topojson.v1.min.js"></script>
-    <script src="js/tree.js"></script>
 </head>
 
 <body>
 <h2>Top 100 World Universities Rankings</h2>
 <ul class="nav nav-tabs" style = "margin-top: 50px;margin-left: 20%;margin-right: 20%">
   <li role="presentation" class="active"><a href="index.html"><font face="verdana" color="black">Overview</font></a></li>
-  <li role="presentation"><a href="tree.html"><font face="verdana" color="#CD63CD">Find Universities</font></a></li>
+  <li role="presentation"><a href="tree.html"><font face="verdana" color="black">Find Universities</font></a></li>
   <li role="presentation"><a href="parallel.html"><font face="verdana" color="black">Investigate Universities</font></a></li>
   <li role="presentation"><a href="search.html"><font face="verdana" color="black">Compare Universities</font></a></li>
-  <li role="presentation"><a href="manual.html"><font face="verdana" color="black">User Manual</font></a></li>
+  <li role="presentation"><a href="manual.html"><font face="verdana" color="#CD63CD">User Manual</font></a></li>
 </ul>
+<ul class = "guide">
+  <li><font face="verdana">Overview:</font></li>
+  <br><p style = "text-align:left"><font face="verdana">Interactive geo virtualization helps you to know how top 100 universities distributed in different countries.</font></p><br>
+  <li><font face="verdana">Find Universities:</font></a></li>
+  <br><p style = "text-align:left"><font face="verdana">You can find universities in your target country by collapse tree virtualization</font></p><br>
 
-<div id="tree-svg" ></div>
+<li><font face="verdana">Investigate Universities:</font></a></li>
+  <br><p style = "text-align:left"><font face="verdana">Parallel virtualization shows university’s ranking information and scores in multiple areas.</font></p><br>
 
+<li><font face="verdana">Compare Universities:</font></a></li>
+  <br><p style = "text-align:left"><font face="verdana">You can compare two universities in different aspects and analysis trend of universities’ ranking in last 6 years.
+</font></p><br>
+</ul>
 </body>
 </html>
