@@ -91,9 +91,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 }
             });
             color.domain([min, max]);
-            // console.log(valueHash);
-            // console.log(max)
-            //console.log("Yale University:" + ranking["Yale University"])
             var country = g.selectAll(".country").data(countries);
 
             country.enter().insert("path")
@@ -134,7 +131,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                     html += "<br><br>";
                     if (d.properties.name in valueHash) {
                         var dict = valueHash[d.properties.name]["ranknums"]
-                        // console.log(dict)
                         for (var p in dict) {
                             html += "<span class=\"tooltip_key\">";
                             html += p;
@@ -144,15 +140,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                             html += "</span>";
                             html += "<br>"
                         }
-                        // for(var i in array) {
-                        //   html += "<span class=\"tooltip_key\">";
-                        //   html += array[i];
-                        //   html += "</span>";
-                        //   html += "<span class=\"tooltip_value\">";
-                        //   html += ranking[array[i]];
-                        //   html += "</span>";
-                        //   html += "<br>"
-                        // }
                     }
                     html += "";
                     html += "</div>";
