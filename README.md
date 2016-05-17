@@ -1,6 +1,6 @@
 World top 100 University Rankings data visualization in D3
 
-For World top 100 University Rankings investigation, we implementated geo virtualization, tree virtualization, parallel virtualization and customized search bar.
+We implementated geo virtualization, tree virtualization, parallel virtualization and customized search bar.
 
 Through all these virtualizations, user can get:
 1. how top 100 universities distributed in different countries.
