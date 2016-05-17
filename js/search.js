@@ -37,12 +37,12 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     });
     var option_select1 = d3.select('#selectors1').append("select")
         .attr("class", "option-select")
-        .style("font-size","13px")
-        .style("font-weight","normal");
+        .style("font-size", "13px")
+        .style("font-weight", "normal");
     var option_select2 = d3.select('#selectors2').append("select")
         .attr("class", "option-select")
-        .style("font-size","13px")
-        .style("font-weight","normal");
+        .style("font-size", "13px")
+        .style("font-weight", "normal");
     var fields = Object.keys(universities);
     for (var i = 0; i < fields.length; i++) {
         var opt1 = option_select1.append("option")
@@ -62,8 +62,8 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     var margin = {top: 20, right: 20, bottom: 40, left: 80};
     var width = window.innerWidth * 0.3 - margin.left - margin.right;
     var height = 200 - margin.top - margin.bottom;
-    // var legendLeft = 600 - margin.right;
-    var legendTop = margin.top;
+    var legendLeft = 100;
+    var legendTop = 10;
     var legendRectSize = 8;
     var legendSpacing = 10;
 
@@ -75,7 +75,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         .range([height, 0]);
 
     //var color = d3.scale.category10();
-    var color = d3.scale.ordinal().range(["#516DFF","#b300b3"]);
+    var color = d3.scale.ordinal().range(["#516DFF", "#b300b3"]);
 
     var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -96,6 +96,38 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             return yScale(+d.val);
         });
 
+    function drawLegend(u1, u2) {
+        color.domain([u1, u2]);
+        var svg = d3.select("#legend").append("svg")
+            .attr("width", window.innerWidth * 0.8)
+            .attr("height", 30)
+            .append("g")
+            .attr("transform", "translate(" + 0 + "," + 0 + ")");
+        var legend = svg.selectAll('.legend')
+            .data(color.domain())
+            .enter()
+            .append('g')
+            .attr('class', 'legend')
+            .attr('transform', function (d, i) {
+                //var height = legendTop;
+                //var offset = height * color.domain().length / 2;
+                var horz = legendLeft+ i * (window.innerWidth * 0.4 - legendLeft);
+                var vert = legendTop;
+                return 'translate(' + horz + ',' + vert + ')';
+            });
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .style('fill', color)
+            .style('stroke', color);
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize)
+            .style("font-size", "11px")
+            .text(function (d) {
+                return d;
+            });
+    }
 
     function drawlinegraph(u1, u2, aspect) {
 
@@ -110,10 +142,10 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             {name: u2, values: universities[u2][aspect]}];
         //create dots data
         var dots_data = [];
-        for(var i = 0; i < univers.length; i++){
+        for (var i = 0; i < univers.length; i++) {
             var scores = univers[i];
-            for (var j = 0; j < scores.values.length; j++){
-                dots_data.push({name: scores.name, year:scores.values[j].year, val:scores.values[j].val});
+            for (var j = 0; j < scores.values.length; j++) {
+                dots_data.push({name: scores.name, year: scores.values[j].year, val: scores.values[j].val});
             }
         }
         // console.log(univers);
@@ -135,7 +167,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .attr("x", width / 2)
             .attr("y", 35)
             .style("text-anchor", "end")
-            .style("font-size","13px")
+            .style("font-size", "13px")
             .text("Year");
 
         svg.append("g")
@@ -145,7 +177,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .attr("transform", "translate(-" + 30 + "," + (height / 2) + ") rotate(-90)")
             .attr("class", "label")
             .style("text-anchor", "middle")
-            .style("font-size","13px")
+            .style("font-size", "13px")
             .text(aspect);
 
 
@@ -202,10 +234,10 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 //console.log(d.val);
                 tooltip.transition()
                     .duration(200)
-                    .style("opacity",.9);
+                    .style("opacity", .9);
                 tooltip.html(d.val)
-                    .style("left", (parseInt(d3.select(this).attr("cx"))+ 50) + "px")
-                    .style("top", (parseInt(d3.select(this).attr("cy")) - height -65) + "px");
+                    .style("left", (parseInt(d3.select(this).attr("cx")) + 50) + "px")
+                    .style("top", (parseInt(d3.select(this).attr("cy")) - height - 65) + "px");
             })
             .on("mouseout", function (d) {
                 tooltip.transition()
@@ -215,13 +247,16 @@ d3.csv("metadata/timesData.csv", function (err, data) {
 
     }
 
-    aspects = ['rank', 'totoal_score', 'teaching', 'research', 'citations', 'international_students']
+    aspects = ['rank', 'totoal_score', 'teaching', 'research', 'citations', 'international_students'];
+    drawLegend("Harvard University", "Peking University");
     for (var i = 0; i < aspects.length; i++) {
-        drawlinegraph("Harvard University", "Peking University", aspects[i])
+        drawlinegraph("Harvard University", "Peking University", aspects[i]);
     }
     d3.select("#submit")
         .on("click", function (d) {
             d3.event.preventDefault();
+            $("#legend").html("");
+            drawLegend($("#selectors1").find(".option-select").val(), $("#selectors2").find(".option-select").val());
             for (var i = 0; i < aspects.length; i++) {
                 $(svg_map[aspects[i]]).html("");
                 drawlinegraph($("#selectors1").find(".option-select").val(), $("#selectors2").find(".option-select").val(), aspects[i]);
