@@ -125,59 +125,11 @@ function UniversityAnalysis(data,options) {
 								return o.values[use]/((options.dimensions.indexOf(use)>-1)?1:o.values[options.ref])
 							}))
 							.rangePoints([HEIGHT-(margins.top+margins.bottom+padding.top+padding.bottom),0]);
-							
-				// } else {
-				// 	var inc=0.000001;
-                //
-				// 		scales[d]=d3.scale.linear()
-				// 			.domain(nested_data.filter(function(){return true;}).sort(function(a, b){
-				//
-				//
-				// 				var sorting=options.sorting[use] || d3.ascending;
-				//
-                //
-				// 				if(a.values[use]==b.values[use]) {
-				// 					if(sorting(a.key,b.key)>1) {
-				// 						a.values[use]+=inc;
-				// 					} else {
-				// 						b.values[use]+=inc;
-				// 					}
-				// 					inc+=inc;
-				// 				}
-				//
-				// 				var __a=(a.values[use]),
-				// 					__b=(b.values[use]);
-                //
-				// 				if(options.dimensions.indexOf(d)==-1) {
-				// 					__a=(a.values[use]/((options.dimensions.indexOf(use)>-1)?1:a.values[options.ref]));
-				// 					__b=(b.values[use]/((options.dimensions.indexOf(use)>-1)?1:b.values[options.ref]))
-				// 				}
-				//
-				// 				return sorting(__a, __b);
-                //
-				// 			}).map(function(o){
-				// 				if(options.dimensions.indexOf(d)>-1) {
-				// 					return o.values[use];
-				// 				}
-				// 				return o.values[use]/((options.dimensions.indexOf(use)>-1)?1:o.values[options.ref])
-				// 			}))
-				// 			.rangePoints([HEIGHT-(margins.top+margins.bottom+padding.top+padding.bottom),0]);
-                //
-                //
-				// 	if(extents[d][0]===0) {
-				// 		extents[d][0]=0.01;
-				// 	}
-                //
-				// 	scales[d]=d3.scale[options.scale_map[d]?options.scale_map[d]:scale_type]().domain(extents[d]).range([HEIGHT-(margins.top+margins.bottom+padding.top+padding.bottom),0]);
-				// }
-
 				wscales[d]=d3.scale.linear().domain([0,extents[d][1]]).range(marker_width).nice()
 				
 			})
 			yscales = scales;
-			width_scales = wscales;
-
-			
+			width_scales = wscales;		
 	}
 
 	updateScales();
@@ -474,18 +426,6 @@ function UniversityAnalysis(data,options) {
 				.style({
 					fill:"#a246b4"
 				})
-
-		// new_markers
-		// 		.filter(function(d){
-		// 			return options.scale_map[d.column]!="ordinal"
-		// 		})
-		// 			.append("circle")
-		// 			.attr("class","hover")
-		// 			.attr("cx",0)
-		// 			.attr("cy",0)
-		// 			.attr("r",5)
-				
-
 		marker
 			.transition()
 			.duration(duration || options.duration)
@@ -613,17 +553,10 @@ function UniversityAnalysis(data,options) {
 	}
 	
 	this.loadData=function(quarter) {
-		// if(!!quarter.date.getTime) {
-		// 	quarter="q"+(Math.floor((quarter.date.getMonth()+1)/3)+1)+"-"+quarter.date.getFullYear();
-		// }
-
-		// var unknonw=[];
 
 		d3.csv(options.path+quarter+"."+options.extension+"?"+(new Date()).getTime(), function(data){
 
-			nested_data=nestData(data);
-
-			
+			nested_data=nestData(data);	
 
 			var universities=universities_group.selectAll("g.univ")
 					.data(nested_data,function(d){
@@ -631,7 +564,6 @@ function UniversityAnalysis(data,options) {
 					})
 					.classed("new",false)
 					
-
 			universities
 				.exit()
 				.remove();

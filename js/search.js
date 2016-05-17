@@ -62,7 +62,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     var margin = {top: 20, right: 20, bottom: 40, left: 80};
     var width = window.innerWidth * 0.3 - margin.left - margin.right;
     var height = 200 - margin.top - margin.bottom;
-    var legendLeft = 100;
+    var legendLeft = 220;
     var legendTop = 10;
     var legendRectSize = 8;
     var legendSpacing = 10;
@@ -74,7 +74,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
     var yScale = d3.scale.linear()
         .range([height, 0]);
 
-    //var color = d3.scale.category10();
     var color = d3.scale.ordinal().range(["#516DFF", "#b300b3"]);
 
     var xAxis = d3.svg.axis()
@@ -88,7 +87,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         .ticks(5);
 
     var line = d3.svg.line()
-        //.interpolate("basis")
         .x(function (d) {
             return xScale(+d.year);
         })
@@ -109,8 +107,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .append('g')
             .attr('class', 'legend')
             .attr('transform', function (d, i) {
-                //var height = legendTop;
-                //var offset = height * color.domain().length / 2;
                 var horz = legendLeft+ i * (window.innerWidth * 0.4 - legendLeft);
                 var vert = legendTop;
                 return 'translate(' + horz + ',' + vert + ')';
@@ -123,7 +119,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
         legend.append('text')
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize)
-            .style("font-size", "11px")
+            .style("font-size", "12px")
             .text(function (d) {
                 return d;
             });
@@ -136,11 +132,9 @@ d3.csv("metadata/timesData.csv", function (err, data) {
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        // u = [u1,u2]
         color.domain([u1, u2]);
         var univers = [{name: u1, values: universities[u1][aspect]},
             {name: u2, values: universities[u2][aspect]}];
-        //create dots data
         var dots_data = [];
         for (var i = 0; i < univers.length; i++) {
             var scores = univers[i];
@@ -148,8 +142,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 dots_data.push({name: scores.name, year: scores.values[j].year, val: scores.values[j].val});
             }
         }
-        // console.log(univers);
-        // x.domain([2011,2016]);
         xScale.domain(d3.extent(data, function (d) {
             return d.year;
         }));
@@ -209,7 +201,6 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                 return color(d.name);
             })
             .on("mouseover", function (d) {
-                //console.log(d.val);
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);

@@ -131,13 +131,6 @@ a:hover {
     fill: none;
 }
 
-/*#pc svg #universities g.hover g.highlight path {
-    stroke: #000;
-    stroke-opacity: 1;
-    stroke-width: 3;
-    fill: none;
-}*/
-
 /*universities's name*/
 #pc svg #universities text {
     fill: #000;
