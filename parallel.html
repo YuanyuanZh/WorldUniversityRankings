@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 - Top 100 World Universities Ranking</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/pc.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="js/geo.js"></script>
+    <script src="js/universitiesAnalysis.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+<h2>Top 100 World Universities Rankings</h2>
+<ul class="nav nav-tabs" style = "margin-top: 50px;margin-left: 25%;margin-right: 25%">
+  <li role="presentation" class="active"><a href="index.html"><font face="verdana" color="black">Overview</font></a></li>
+  <li role="presentation"><a href="tree.html"><font face="verdana" color="black">Find Universities</font></a></li>
+  <li role="presentation"><a href="parallel.html"><font face="verdana" color="#CD63CD">Investigate Universities</font></a></li>
+  <li role="presentation"><a href="search.html"><font face="verdana" color="black">Compare Universities</font></a></li>
+</ul>
+
+<div id="wrapper" style = "margin-top:20px">
+    <div id="header">
+    </div>
+    <div id="sy">
+        <div id="sy_select">
+            <div id="sy_selector">
+                <a id="year2016" class="selected">2016</a>
+                <a id="year2015">2015</a>
+                <a id="year2014">2014</a>
+                <a id="year2013">2013</a>
+                <a id="year2012">2012</a>
+                <a id="year2011">2011</a>
+            </div>
+        </div>
+        <div id="sr_select">
+            <div id="sr_selector">
+                <a id="first" class="selected">1-25</a>
+                <a id="second">26-50</a>
+                <a id="third">51-75</a>
+                <a id="fourth">76-100</a>
+            </div>
+        </div>
+    </div>
+    <div id="pc">
+        <div id="tooltip_pc">
+            <div></div>
+        </div>
+    </div>
+    <br/><br/>
+</div>
+
+</body>
+</html>
