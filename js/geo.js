@@ -1,6 +1,6 @@
 d3.csv("metadata/timesData.csv", function (err, data) {
 
-    var width = 768,
+    var width = 750,
         height = 468;
 
     var color = d3.scale.linear()
