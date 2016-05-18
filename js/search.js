@@ -205,7 +205,7 @@ d3.csv("metadata/timesData.csv", function (err, data) {
                     .duration(200)
                     .style("opacity", .9);
                 tooltip.html(d.val)
-                    .style("left", (parseInt(d3.select(this).attr("cx")) + 50) + "px")
+                    .style("left", (parseInt(d3.select(this).attr("cx")) + 80) + "px")
                     .style("top", (parseInt(d3.select(this).attr("cy")) - height - 65) + "px");
             })
             .on("mouseout", function (d) {
